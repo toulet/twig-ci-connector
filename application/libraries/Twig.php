@@ -1,11 +1,4 @@
 <?php if (! defined('BASEPATH')) exit('No direct script access allowed');
-/**
- * Twig interface for CodeIgniter
- *
- * @author Cyrille TOULET <cyrille.toulet@linux.com>
- * @see http://twig.sensiolabs.org/
- */
-
 
 // Load Twig engine
 require_once 'Twig/Autoloader.php';
@@ -13,7 +6,10 @@ Twig_Autoloader::register();
 
 
 /**
- * The Twig interface
+ * Twig interface for CodeIgniter
+ *
+ * @author Cyrille TOULET <cyrille.toulet@linux.com>
+ * @see http://twig.sensiolabs.org/
  */
 class Twig 
 {
