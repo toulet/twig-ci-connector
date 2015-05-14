@@ -1,4 +1,4 @@
-# Twig library for Codeigniter
+# Twig connector for Codeigniter
 
 This library allows to use the Twig template engine in the CodeIgniter 
 web framework.
