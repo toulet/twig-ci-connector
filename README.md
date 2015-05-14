@@ -42,7 +42,7 @@ class Welcome extends CI_Controller
     public function index()
     {
         // Load Twig library
-        $this->load('twig');
+        $this->load->library('twig');
 
 	// Set template variables
 	$vars['title'] = 'Twig template on CodeIgniter';
