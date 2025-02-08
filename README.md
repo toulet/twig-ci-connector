@@ -1,7 +1,6 @@
 # Twig connector for Codeigniter
 
-This library allows to use the Twig template engine in the CodeIgniter 
-web framework.
+This library allows to use the Twig template engine v3 in the CodeIgniter web framework v4.
 
 
 ## Legals
@@ -14,9 +13,9 @@ version 3](http://opensource.org/licenses/GPL-3.0).
 
 ## Usage
 
-First, add your Twig templates in **application/views**.
+First, add your Twig templates in **app/Views/** directory.
 
-For example, the template *application/views/homepage.html*:
+For example, the template *app/Views/homepage.html*:
 ```php
 <!DOCTYPE html>
 <html lang="fr">
@@ -31,19 +30,45 @@ For example, the template *application/views/homepage.html*:
 </html>
 ```
 
-And finaly, load Twig and render the template in your controller.
+Edit the BaseController class in **app/Controllers/BaseController.php** to instanciate the Twig library:
 
-For example, the controller *application/controllers/welcome.php*:
 ```php
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 
-class Welcome extends CI_Controller
-{
-    public function index()
+//...
+use App\Libraries\Twig;
+
+//...
+    /**
+     * Instance of the Twig library.
+     *
+     * @var Twig
+     */
+    protected $twig;
+
+    /**
+     * @return void
+     */
+    public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
-        // Load Twig library
-        $this->load->library('twig');
+        //...
 
+    	// Load the Twig library
+	$this->twig = new Twig();
+    }
+}
+```
+
+And finaly, use it in your controllers!
+```php
+<?php
+
+namespace App\Controllers;
+
+class Home extends BaseController
+{
+    public function index(): string
+    {
 	// Set template variables
 	$vars['title'] = 'Twig template on CodeIgniter';
 
@@ -52,12 +77,3 @@ class Welcome extends CI_Controller
     }
 }
 ```
-
-
-## Tips
-
- * I recommend you to load Twig one time in the configuration file 
-*application/config/autoload.php*.
- * To extends Twig, register your function in the Twig library constructor (
-*application/libraries/Twig.php*).
-
